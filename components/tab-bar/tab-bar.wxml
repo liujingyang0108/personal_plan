@@ -1,12 +1,18 @@
 <view class="tab-bar">
-  <view
-    class="tab-item {{current === index ? 'active' : ''}}"
-    wx:for="{{tabs}}"
-    wx:key="index"
-    data-index="{{index}}"
-    bindtap="switchTab"
-  >
-    <text class="tab-icon">{{item.icon}}</text>
-    <text class="tab-text">{{item.text}}</text>
+  <view class="tab-item {{current === 0 ? 'active' : ''}}" catchtap="switchTab" data-index="0">
+    <text class="tab-icon">📋</text>
+    <text class="tab-text">计划</text>
+  </view>
+  <view class="tab-item {{current === 1 ? 'active' : ''}}" catchtap="switchTab" data-index="1">
+    <text class="tab-icon">✅</text>
+    <text class="tab-text">今天</text>
+  </view>
+  <view class="tab-item {{current === 2 ? 'active' : ''}}" catchtap="switchTab" data-index="2">
+    <text class="tab-icon">💪</text>
+    <text class="tab-text">训练</text>
+  </view>
+  <view class="tab-item {{current === 3 ? 'active' : ''}}" catchtap="switchTab" data-index="3">
+    <text class="tab-icon">👤</text>
+    <text class="tab-text">我的</text>
   </view>
 </view>

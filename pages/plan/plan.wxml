@@ -49,5 +49,22 @@
     </view>
   </view>
 
-  <tab-bar current="0"></tab-bar>
+  <view class="tab-bar">
+    <view class="tab-item active">
+      <text class="tab-icon">📋</text>
+      <text class="tab-text">计划</text>
+    </view>
+    <view class="tab-item" catchtap="switchTab" data-index="1">
+      <text class="tab-icon">✅</text>
+      <text class="tab-text">今天</text>
+    </view>
+    <view class="tab-item" catchtap="switchTab" data-index="2">
+      <text class="tab-icon">💪</text>
+      <text class="tab-text">训练</text>
+    </view>
+    <view class="tab-item" catchtap="switchTab" data-index="3">
+      <text class="tab-icon">👤</text>
+      <text class="tab-text">我的</text>
+    </view>
+  </view>
 </view>

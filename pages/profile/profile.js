@@ -46,17 +46,6 @@ Page({
   loadData() {
     this.setData({ loading: true });
     const app = getApp();
-
-    if (!app.globalData.hasCloudAccess) {
-      this.loadFromLocal();
-      return;
-    }
-
-    this.loadFromLocal();
-  },
-
-  loadFromLocal() {
-    const app = getApp();
     const trainings = app.globalData.localData?.trainings || [];
 
     const milestones = trainings.slice(0, 5).map(t => ({
@@ -92,5 +81,11 @@ Page({
 
   generateReview() {
     wx.showToast({ title: 'AI复盘功能开发中', icon: 'none' });
+  },
+
+  switchTab(e) {
+    const index = e.currentTarget.dataset.index;
+    const urls = ['/pages/plan/plan', '/pages/today/today', '/pages/train/train', '/pages/profile/profile'];
+    wx.reLaunch({ url: urls[index] });
   }
 });

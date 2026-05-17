@@ -87,5 +87,11 @@ Page({
 
   closeSummary() {
     this.setData({ showSummary: false });
+  },
+
+  switchTab(e) {
+    const index = e.currentTarget.dataset.index;
+    const urls = ['/pages/plan/plan', '/pages/today/today', '/pages/train/train', '/pages/profile/profile'];
+    wx.reLaunch({ url: urls[index] });
   }
 });

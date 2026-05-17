@@ -32,7 +32,7 @@
     </view>
   </view>
 
-  <view class="exercise-list" wx:else>
+  <view class="exercise-list" wx:if="{{training}}">
     <view class="rest-overlay" wx:if="{{restTimer}}" catchtap="cancelRest">
       <view class="rest-content">
         <text class="rest-title">组间休息</text>
@@ -74,16 +74,33 @@
         </view>
       </view>
     </view>
+
+    <view class="training-bar">
+      <view class="finish-btn" catchtap="finishTraining">
+        <text>结束训练</text>
+      </view>
+      <view class="cancel-btn" catchtap="goBack">
+        <text>取消</text>
+      </view>
+    </view>
   </view>
 
-  <view class="training-bar" wx:if="{{training}}">
-    <view class="finish-btn" catchtap="finishTraining">
-      <text>结束训练</text>
+  <view class="tab-bar" wx:if="{{!training}}">
+    <view class="tab-item" catchtap="switchTab" data-index="0">
+      <text class="tab-icon">📋</text>
+      <text class="tab-text">计划</text>
     </view>
-    <view class="cancel-btn" catchtap="goBack">
-      <text>取消</text>
+    <view class="tab-item" catchtap="switchTab" data-index="1">
+      <text class="tab-icon">✅</text>
+      <text class="tab-text">今天</text>
+    </view>
+    <view class="tab-item active">
+      <text class="tab-icon">💪</text>
+      <text class="tab-text">训练</text>
+    </view>
+    <view class="tab-item" catchtap="switchTab" data-index="3">
+      <text class="tab-icon">👤</text>
+      <text class="tab-text">我的</text>
     </view>
   </view>
-
-  <tab-bar current="2" wx:if="{{!training}}"></tab-bar>
 </view>

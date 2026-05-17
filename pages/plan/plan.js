@@ -35,6 +35,12 @@ Page({
     this.setData({ goalsByCategory, loading: false });
   },
 
+  switchTab(e) {
+    const index = e.currentTarget.dataset.index;
+    const urls = ['/pages/plan/plan', '/pages/today/today', '/pages/train/train', '/pages/profile/profile'];
+    wx.reLaunch({ url: urls[index] });
+  },
+
   goToGoalDetail(e) {
     const { id, category } = e.currentTarget.dataset;
     wx.navigateTo({
