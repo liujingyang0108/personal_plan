@@ -1,0 +1,217 @@
+.header {
+  padding: 32rpx 0 40rpx;
+}
+
+.container {
+  padding-bottom: 140rpx;
+}
+
+.header-title {
+  display: block;
+  font-size: 44rpx;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 8rpx;
+}
+
+.header-subtitle {
+  font-size: 26rpx;
+  color: var(--light-color);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 32rpx;
+}
+
+.section {
+  background: var(--card-bg);
+  border-radius: 20rpx;
+  padding: 28rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 24rpx;
+}
+
+.calendar {
+  background: var(--bg-color);
+  border-radius: 16rpx;
+  padding: 24rpx;
+}
+
+.calendar-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.nav-btn {
+  font-size: 44rpx;
+  color: var(--primary-color);
+  padding: 0 20rpx;
+}
+
+.calendar-month {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.calendar-weekdays {
+  display: flex;
+  margin-bottom: 16rpx;
+}
+
+.calendar-weekdays text {
+  flex: 1;
+  text-align: center;
+  font-size: 24rpx;
+  color: var(--light-color);
+}
+
+.calendar-days {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.calendar-day {
+  width: 14.28%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26rpx;
+  color: var(--primary-color);
+  box-sizing: border-box;
+}
+
+.calendar-day.completed {
+  background: var(--success-color);
+  color: #ffffff;
+  border-radius: 50%;
+}
+
+.calendar-day.empty {
+  color: transparent;
+}
+
+.milestone-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.milestone-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  background: var(--bg-color);
+  border-radius: 12rpx;
+}
+
+.milestone-date {
+  font-size: 24rpx;
+  color: var(--light-color);
+  margin-right: 20rpx;
+  min-width: 100rpx;
+}
+
+.milestone-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.milestone-template {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: var(--primary-color);
+  margin-bottom: 4rpx;
+}
+
+.milestone-detail {
+  font-size: 22rpx;
+  color: var(--light-color);
+}
+
+.distraction-stats {
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.stat-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24rpx;
+  background: var(--bg-color);
+  border-radius: 12rpx;
+}
+
+.stat-value {
+  font-size: 48rpx;
+  font-weight: 700;
+  color: var(--warning-color);
+  margin-bottom: 8rpx;
+}
+
+.stat-label {
+  font-size: 22rpx;
+  color: var(--light-color);
+}
+
+.reason-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.reason-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16rpx 20rpx;
+  background: var(--bg-color);
+  border-radius: 10rpx;
+}
+
+.reason-name {
+  font-size: 26rpx;
+  color: var(--primary-color);
+}
+
+.reason-minutes {
+  font-size: 24rpx;
+  color: var(--light-color);
+}
+
+.empty-state {
+  padding: 40rpx;
+  text-align: center;
+}
+
+.empty-state-text {
+  font-size: 26rpx;
+  color: var(--light-color);
+}
+
+.ai-review-btn {
+  padding: 28rpx;
+  background: linear-gradient(135deg, var(--primary-color), #555555);
+  color: #ffffff;
+  border-radius: 16rpx;
+  text-align: center;
+  font-size: 30rpx;
+  font-weight: 500;
+}
+
+.ai-review-btn:active {
+  opacity: 0.8;
+}

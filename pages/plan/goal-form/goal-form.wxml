@@ -1,0 +1,34 @@
+<view class="container">
+  <view class="form-group">
+    <text class="form-label">维度</text>
+    <view class="category-tag">{{categoryName}}</view>
+  </view>
+
+  <view class="form-group">
+    <text class="form-label">目标标题</text>
+    <input class="input" value="{{title}}" placeholder="例如：12月前完成半马" bindinput="onTitleChange" />
+  </view>
+
+  <view class="form-group">
+    <text class="form-label">目标描述</text>
+    <textarea class="textarea" value="{{description}}" placeholder="详细描述你的目标..." bindinput="onDescChange" />
+  </view>
+
+  <view class="form-group">
+    <text class="form-label">开始日期</text>
+    <picker mode="date" value="{{start_date}}" bindchange="onStartDateChange">
+      <view class="picker-value">{{start_date || '请选择'}}</view>
+    </picker>
+  </view>
+
+  <view class="form-group">
+    <text class="form-label">结束日期</text>
+    <picker mode="date" value="{{end_date}}" bindchange="onEndDateChange">
+      <view class="picker-value">{{end_date || '请选择'}}</view>
+    </picker>
+  </view>
+
+  <view class="save-btn" catchtap="saveGoal">
+    <text>保存目标</text>
+  </view>
+</view>

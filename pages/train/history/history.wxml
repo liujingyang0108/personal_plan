@@ -1,0 +1,26 @@
+<view class="container">
+  <view class="loading" wx:if="{{loading}}">
+    <view class="loading-dot"></view>
+    <view class="loading-dot"></view>
+    <view class="loading-dot"></view>
+  </view>
+
+  <view class="history-list" wx:else>
+    <view
+      class="history-item"
+      wx:for="{{histories}}"
+      wx:key="_id"
+    >
+      <view class="history-date">{{item.date}}</view>
+      <view class="history-info">
+        <text class="history-template">{{item.template_name}}</text>
+        <text class="history-exercises">{{item.exercises.length}}个动作</text>
+      </view>
+    </view>
+
+    <view class="empty-state" wx:if="{{histories.length === 0}}">
+      <text class="empty-state-icon">📋</text>
+      <text class="empty-state-text">暂无训练记录\n去训练Tab开始吧</text>
+    </view>
+  </view>
+</view>

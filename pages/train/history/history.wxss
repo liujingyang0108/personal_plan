@@ -1,0 +1,48 @@
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  padding: 28rpx;
+  background: var(--card-bg);
+  border-radius: 16rpx;
+}
+
+.history-item:active {
+  background: var(--bg-color);
+}
+
+.history-date {
+  font-size: 24rpx;
+  color: var(--light-color);
+  margin-right: 20rpx;
+  min-width: 140rpx;
+}
+
+.history-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.history-template {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 6rpx;
+}
+
+.history-exercises {
+  font-size: 24rpx;
+  color: var(--light-color);
+}
+
+.history-arrow {
+  font-size: 40rpx;
+  color: var(--light-color);
+  margin-left: 16rpx;
+}

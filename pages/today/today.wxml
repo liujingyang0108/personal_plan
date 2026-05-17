@@ -1,0 +1,70 @@
+<view class="container">
+  <view class="header">
+    <text class="header-title">{{date}}</text>
+    <text class="header-subtitle">今日意图</text>
+  </view>
+
+  <view class="loading" wx:if="{{loading}}">
+    <view class="loading-dot"></view>
+    <view class="loading-dot"></view>
+    <view class="loading-dot"></view>
+  </view>
+
+  <view class="intention-list" wx:else>
+    <view
+      class="intention-item {{item.is_completed ? 'completed' : ''}}"
+      wx:for="{{intentions}}"
+      wx:key="_id"
+    >
+      <view class="intention-check" catchtap="toggleComplete" data-id="{{item._id}}">
+        <view class="checkbox {{item.is_completed ? 'checked' : ''}}">
+          <text wx:if="{{item.is_completed}}">✓</text>
+        </view>
+      </view>
+      <view class="intention-content">
+        <text class="intention-title">{{item.title}}</text>
+        <view class="intention-tag tag-{{item.category}}">{{item.category}}</view>
+      </view>
+    </view>
+
+    <view class="intention-empty" wx:if="{{intentions.length === 0}}">
+      <text class="empty-state-icon">📝</text>
+      <text class="empty-state-text">还没有今日意图\n点击下方按钮添加</text>
+    </view>
+  </view>
+
+  <view class="action-bar">
+    <view class="action-btn {{locked ? 'locked' : ''}}" catchtap="toggleLock">
+      <text>{{locked ? '🔒 已锁定' : '🔓 锁定今日'}}</text>
+    </view>
+    <view class="action-btn primary" catchtap="addIntention" wx:if="{{!locked}}">
+      <text>+ 添加意图</text>
+    </view>
+    <view class="action-btn secondary" catchtap="showEveningSummary">
+      <text>📊 晚间小结</text>
+    </view>
+  </view>
+
+  <view class="summary-modal" wx:if="{{showSummary}}" catchtap="closeSummary">
+    <view class="summary-content" catchtap="stopPropagation">
+      <text class="summary-title">今日小结</text>
+      <view class="summary-stats">
+        <view class="stat-item">
+          <text class="stat-value">{{stats.completed}}</text>
+          <text class="stat-label">已完成</text>
+        </view>
+        <view class="stat-item">
+          <text class="stat-value">{{stats.total}}</text>
+          <text class="stat-label">总计</text>
+        </view>
+        <view class="stat-item">
+          <text class="stat-value">{{stats.completionRate}}%</text>
+          <text class="stat-label">完成率</text>
+        </view>
+      </view>
+      <view class="summary-close" catchtap="closeSummary">关闭</view>
+    </view>
+  </view>
+
+  <tab-bar current="1"></tab-bar>
+</view>

@@ -1,0 +1,53 @@
+<view class="container">
+  <view class="header">
+    <text class="header-title">人生仪表盘</text>
+    <text class="header-subtitle">四大维度的目标总览</text>
+  </view>
+
+  <view class="loading" wx:if="{{loading}}">
+    <view class="loading-dot"></view>
+    <view class="loading-dot"></view>
+    <view class="loading-dot"></view>
+  </view>
+
+  <view class="category-list" wx:else>
+    <view
+      class="category-card"
+      wx:for="{{categories}}"
+      wx:key="id"
+      style="--category-color: {{item.color}}"
+    >
+      <view class="category-header">
+        <text class="category-icon">{{item.icon}}</text>
+        <text class="category-name">{{item.name}}</text>
+        <view class="category-add" catchtap="addGoal" data-category="{{item.id}}">+ 添加</view>
+      </view>
+
+      <view class="goal-list">
+        <view
+          class="goal-item"
+          wx:for="{{goalsByCategory[item.id]}}"
+          wx:key="_id"
+          catchtap="goToGoalDetail"
+          data-id="{{item._id}}"
+          data-category="{{item.category}}"
+        >
+          <view class="goal-info">
+            <text class="goal-title">{{item.title}}</text>
+            <view class="goal-meta">
+              <text class="goal-date">{{item.end_date}}</text>
+              <view class="goal-status status-{{item.status}}">{{item.status}}</view>
+            </view>
+          </view>
+          <text class="goal-arrow">›</text>
+        </view>
+
+        <view class="goal-empty" wx:if="{{goalsByCategory[item.id].length === 0}}">
+          <text>暂无目标，点击添加</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <tab-bar current="0"></tab-bar>
+</view>

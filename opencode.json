@@ -1,0 +1,32 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "local/MiniMax-M2.7",
+  "provider": {
+    "local": {
+      "api": "openai",
+      "name": "local",
+      "options": {
+        "baseURL": "http://10.1.112.236:32711/157/8000/v1",
+        "apiKey": "placeholder"
+      },
+      "models": {
+        "MiniMax-M2.7": {
+          "id": "MiniMax-M2.7",
+          "name": "MiniMax-M2.7",
+          "limit": {
+            "context": 128000,
+            "output": 4096
+          },
+          "cost": {
+            "input": 0,
+            "output": 0
+          },
+          "modalities": {
+            "input": ["text"],
+            "output": ["text"]
+          }
+        }
+      }
+    }
+  }
+}

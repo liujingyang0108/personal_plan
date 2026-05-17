@@ -1,0 +1,47 @@
+<view class="container">
+  <view class="loading" wx:if="{{loading}}">
+    <view class="loading-dot"></view>
+    <view class="loading-dot"></view>
+    <view class="loading-dot"></view>
+  </view>
+
+  <view class="goal-detail" wx:elif="{{goal}}">
+    <view class="goal-header">
+      <text class="goal-icon">{{goal.category === 'fitness' ? '💪' : goal.category === 'finance' ? '💰' : goal.category === 'learning' ? '📚' : '💼'}}</text>
+      <view class="goal-title-row">
+        <text class="goal-title">{{goal.title || '新建目标'}}</text>
+        <view class="goal-status status-{{goal.status}}">{{goal.status}}</view>
+      </view>
+    </view>
+
+    <view class="goal-desc">
+      <text class="desc-label">目标描述</text>
+      <text class="desc-content">{{goal.description || '暂无描述'}}</text>
+    </view>
+
+    <view class="goal-dates">
+      <view class="date-item">
+        <text class="date-label">开始日期</text>
+        <text class="date-value">{{goal.start_date || '未设置'}}</text>
+      </view>
+      <view class="date-item">
+        <text class="date-label">结束日期</text>
+        <text class="date-value">{{goal.end_date || '未设置'}}</text>
+      </view>
+    </view>
+
+    <view class="ai-plan" wx:if="{{goal.ai_plan}}">
+      <text class="plan-label">AI 规划</text>
+      <text class="plan-content">{{goal.ai_plan}}</text>
+    </view>
+
+    <view class="action-section">
+      <text class="section-title">修改状态</text>
+      <view class="status-buttons">
+        <view class="status-btn {{goal.status === '进行中' ? 'active' : ''}}" catchtap="changeStatus" data-status="进行中">进行中</view>
+        <view class="status-btn {{goal.status === '已完成' ? 'active' : ''}}" catchtap="changeStatus" data-status="已完成">已完成</view>
+        <view class="status-btn {{goal.status === '暂停' ? 'active' : ''}}" catchtap="changeStatus" data-status="暂停">暂停</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,80 @@
+<view class="container">
+  <view class="header">
+    <text class="header-title">我的</text>
+    <text class="header-subtitle">所有坚持的成果展示</text>
+  </view>
+
+  <view class="loading" wx:if="{{loading}}">
+    <view class="loading-dot"></view>
+    <view class="loading-dot"></view>
+    <view class="loading-dot"></view>
+  </view>
+
+  <view class="content" wx:else>
+    <view class="section">
+      <view class="section-title">自律日历</view>
+      <view class="calendar">
+        <view class="calendar-nav">
+          <text class="nav-btn" catchtap="prevMonth">‹</text>
+          <text class="calendar-month">{{currentMonth}}</text>
+          <text class="nav-btn" catchtap="nextMonth">›</text>
+        </view>
+        <view class="calendar-weekdays">
+          <text wx:for="{{['日','一','二','三','四','五','六']}}" wx:key="index">{{item}}</text>
+        </view>
+        <view class="calendar-days">
+          <view
+            class="calendar-day {{item.day && (item.day % 3 === 0 ? 'completed' : '')}}"
+            wx:for="{{calendar}}"
+            wx:key="index"
+          >
+            <text>{{item.day}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">训练里程碑</view>
+      <view class="milestone-list">
+        <view class="milestone-item" wx:for="{{milestones}}" wx:key="index">
+          <view class="milestone-date">{{item.date}}</view>
+          <view class="milestone-content">
+            <text class="milestone-template">{{item.template}}</text>
+            <text class="milestone-detail">{{item.exerciseCount}}个动作</text>
+          </view>
+        </view>
+        <view class="empty-state" wx:if="{{milestones.length === 0}}">
+          <text class="empty-state-text">暂无训练记录</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">分心账本</view>
+      <view class="distraction-stats">
+        <view class="stat-card">
+          <text class="stat-value">{{distractionStats.totalMinutes}}</text>
+          <text class="stat-label">本月分心（分钟）</text>
+        </view>
+      </view>
+      <view class="reason-list">
+        <view class="reason-item" wx:for="{{distractionStats.reasons}}" wx:key="index">
+          <text class="reason-name">{{item.reason}}</text>
+          <text class="reason-minutes">{{item.minutes}}分钟</text>
+        </view>
+        <view class="empty-state" wx:if="{{distractionStats.reasons.length === 0}}">
+          <text class="empty-state-text">暂无分心记录</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="ai-review-btn" catchtap="generateReview">
+        <text>🤖 生成本月复盘</text>
+      </view>
+    </view>
+  </view>
+
+  <tab-bar current="3"></tab-bar>
+</view>

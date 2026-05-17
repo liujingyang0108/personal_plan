@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "今天",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "tab-bar": "/components/tab-bar/tab-bar"
+  }
+}

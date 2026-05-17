@@ -1,0 +1,89 @@
+<view class="container">
+  <view class="header" wx:if="{{!training}}">
+    <text class="header-title">训练</text>
+    <text class="header-subtitle">选择训练模板开始</text>
+  </view>
+
+  <view class="header" wx:else>
+    <view class="training-header">
+      <text class="header-title">{{currentTemplate.icon}} {{currentTemplate.name}}</text>
+      <text class="header-subtitle">{{currentTemplate.description}}</text>
+    </view>
+  </view>
+
+  <view class="template-list" wx:if="{{!training}}">
+    <view
+      class="template-card"
+      wx:for="{{templates}}"
+      wx:key="id"
+      catchtap="selectTemplate"
+      data-id="{{item.id}}"
+    >
+      <text class="template-icon">{{item.icon}}</text>
+      <view class="template-info">
+        <text class="template-name">{{item.name}}</text>
+        <text class="template-desc">{{item.description}}</text>
+      </view>
+      <text class="template-arrow">›</text>
+    </view>
+
+    <view class="history-btn" catchtap="viewHistory">
+      <text>📋 查看训练历史</text>
+    </view>
+  </view>
+
+  <view class="exercise-list" wx:else>
+    <view class="rest-overlay" wx:if="{{restTimer}}" catchtap="cancelRest">
+      <view class="rest-content">
+        <text class="rest-title">组间休息</text>
+        <text class="rest-time">{{restSeconds}}s</text>
+        <text class="rest-hint">点击取消休息</text>
+      </view>
+    </view>
+
+    <view
+      class="exercise-card"
+      wx:for="{{exercises}}"
+      wx:key="index"
+    >
+      <view class="exercise-header">
+        <text class="exercise-name">{{item.name}}</text>
+        <text class="exercise-progress">{{item.sets.length}}/{{item.targetSets}}组</text>
+      </view>
+
+      <view class="set-list">
+        <view
+          class="set-item {{set.completed ? 'completed' : ''}}"
+          wx:for="{{item.sets}}"
+          wx:for-item="set"
+          wx:key="index"
+        >
+          <text class="set-info">组 {{index + 1}}: {{set.weight}}kg × {{set.reps}}次</text>
+          <view class="set-check" wx:if="{{set.completed}}">✓</view>
+        </view>
+      </view>
+
+      <view class="exercise-actions">
+        <view
+          class="complete-btn"
+          catchtap="completeSet"
+          data-exercise-index="{{index}}"
+          data-set-index="{{item.sets.length}}"
+        >
+          <text>完成一组</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="training-bar" wx:if="{{training}}">
+    <view class="finish-btn" catchtap="finishTraining">
+      <text>结束训练</text>
+    </view>
+    <view class="cancel-btn" catchtap="goBack">
+      <text>取消</text>
+    </view>
+  </view>
+
+  <tab-bar current="2" wx:if="{{!training}}"></tab-bar>
+</view>

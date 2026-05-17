@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="form-group">
+    <text class="form-label">意图内容</text>
+    <input class="input" value="{{title}}" placeholder="例如：完成项目文档" bindinput="onTitleChange" />
+  </view>
+
+  <view class="form-group">
+    <text class="form-label">所属维度</text>
+    <picker mode="selector" range="{{categories}}" range-key="name" bindchange="onCategoryChange">
+      <view class="picker-value">{{categoryName}}</view>
+    </picker>
+  </view>
+
+  <view class="save-btn" catchtap="saveIntention">
+    <text>添加意图</text>
+  </view>
+</view>
